@@ -79,7 +79,7 @@ public class Lista {
             options.nextLine();
             int option = options.nextInt();
             if (option != 1) {
-                flag = false;
+                flag = !flag;
             }
         } while (flag);
         menu();
@@ -90,7 +90,7 @@ public class Lista {
     }
 
     public void agregarAlFinal(Estudiante estud){
-        // Define un nuevo nodo.
+        // Define un nuevo estudiante.
         Estudiante nuevo = new Estudiante(estud.getIdEstudiante(),estud.getNomEstudiante(),
                                estud.getNumCelular(),estud.getCarnet(),estud.getEdad());
 
@@ -111,6 +111,7 @@ public class Lista {
                 inicio = inicio.getSiguiente();
                 i++;
             }
+            System.out.print( "NULL");
         }
     }
 
