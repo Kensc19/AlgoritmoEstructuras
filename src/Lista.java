@@ -1,14 +1,13 @@
-import org.w3c.dom.Node;
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Menu {
+public class Lista {
     Scanner options = new Scanner(System.in);
     Estudiante estudiante = new Estudiante();
+    Estudiante inicio = new Estudiante();
+    private int countEstuds;
 
-    public void menu(){
-
+    public void menu() {
 
 
         System.out.println("1 Ingresar Estudiante");
@@ -26,7 +25,7 @@ public class Menu {
 
         try {
             int optionUser = options.nextInt();
-            if(optionUser!=11){
+            if (optionUser != 11) {
                 switch (optionUser) {
                     case 1:
                         ingresarEstds();
@@ -66,29 +65,59 @@ public class Menu {
             else {
                 System.out.println("Decidió salir");
             }
-        }catch(NullPointerException | NumberFormatException | InputMismatchException w){
+        } catch (NullPointerException | NumberFormatException | InputMismatchException w) {
             System.out.println("\n**********Ingrese el tipo de valor correcto ************");
         }// end catch
 
     }
-    public void ingresarEstds(){
 
-            System.out.println("\nIngrese el ID: Int");
-                int idEstuds = options.nextInt();
-                System.out.println("\nIngrese el nombre: Str");
-                options.nextLine();
-                String nombre = options.nextLine();
-                System.out.println("\nIngrese el numero de celular: Int");
-                options.nextLine();
-                int numCelular = options.nextInt();
-                System.out.println("\nIngrese el carnet: Int");
-                options.nextLine();
-                String carnet = options.nextLine();
-                System.out.println("\nIngrese la edad: Int");
-                options.nextLine();
-                int edad = options.nextInt();
+    public void ingresarEstds() {
 
+        System.out.println("\nIngrese el ID: Int");
+        int idEstuds = options.nextInt();
+        System.out.println("\nIngrese el nombre: Str");
+        options.nextLine();
+        String nombre = options.nextLine();
+        System.out.println("\nIngrese el numero de celular: Int");
+        options.nextLine();
+        int numCelular = options.nextInt();
+        System.out.println("\nIngrese el carnet: Int");
+        options.nextLine();
+        String carnet = options.nextLine();
+        System.out.println("\nIngrese la edad: Int");
+        options.nextLine();
+        int edad = options.nextInt();
+    }
+
+    public boolean listaEstudsVacia(){
+        return inicio==null;
+    }
+
+    public void agregarAlFinal(Estudiante estud){
+        // Define un nuevo nodo.
+        Estudiante nuevo = new Estudiante(estud.getIdEstudiante(),estud.getNomEstudiante(),estud.getNumCelular(),estud.getCarnet(),estud.getEdad());
+
+        // Consulta si la lista esta vacia.
+        if (listaEstudsVacia()) {
+            // Inicializa la lista agregando como inicio al nuevo nodo.
+            inicio = nuevo;
+            // Caso contrario recorre la lista hasta llegar al ultimo nodo
+            //y agrega el nuevo.
+        } else{
+            // Crea ua copia de la lista.
+            Estudiante aux = inicio;
+            // Recorre la lista hasta llegar al ultimo nodo.
+            while(aux.getSiguiente() != null){
+                aux = aux.getSiguiente();
             }
-}
+            // Agrega el nuevo nodo al final de la lista.
+            aux.setSiguiente(nuevo);
+        }
 
+        countEstuds++;
+    }
+
+
+
+}
 
