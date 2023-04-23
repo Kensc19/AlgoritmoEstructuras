@@ -9,6 +9,7 @@ public class Estudiante {
     private String carnet;
 
     private int edad;
+    private Estudiante siguiente;
 
     public int getNumCelular() {
         return numCelular;
@@ -50,10 +51,26 @@ public class Estudiante {
         this.nomEstudiante = nomEstudiante;
     }
 
+    public Estudiante getSiguiente() {return siguiente;}
+
+    public void setSiguiente(Estudiante siguiente) {this.siguiente = siguiente;}
+
     public Estudiante() {
 
 
 
+    }
+
+    @Override
+    public String toString() {
+        return "Estudiante{" +
+                "idEstudiante=" + idEstudiante +
+                ", nomEstudiante='" + nomEstudiante + '\'' +
+                ", numCelular=" + numCelular +
+                ", carnet='" + carnet + '\'' +
+                ", edad=" + edad +
+                ", siguiente=" + siguiente +
+                '}';
     }
 
     public Estudiante(int idEstudiante, String nomEstudiante, int numCelular, String carnet, int edad) {
@@ -62,5 +79,7 @@ public class Estudiante {
         this.numCelular = numCelular;
         this.carnet = carnet;
         this.edad = edad;
+        this.siguiente = null;
     }
+
 }
