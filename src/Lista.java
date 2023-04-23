@@ -39,6 +39,9 @@ public class Lista {
                     case 4:
 
                         break;
+                    case 5:
+
+                        break;
                     case 6:
 
                         break;
@@ -115,6 +118,70 @@ public class Lista {
         }
 
         countEstuds++;
+    }
+
+    public boolean buscarID(int referencia){
+        // Crea una copia de la lista.
+        Estudiante aux = inicio;
+        // Bandera para indicar si el valor existe.
+        boolean encontrado = false;
+        // Recorre la lista hasta encontrar el elemento o hasta
+        // llegar al final de la lista.
+        while(aux != null && encontrado != true){
+            // Consulta si el valor del nodo es igual al de referencia.
+            if (referencia == aux.getIdEstudiante()){
+                // Canbia el valor de la bandera.
+                encontrado = true;
+            }
+            else{
+                // Avansa al siguiente. nodo.
+                aux = aux.getSiguiente();
+            }
+        }
+        // Retorna el resultado de la bandera.
+        return encontrado;
+    }
+    public boolean buscarNombre(String nomReferent){
+        // Crea una copia de la lista.
+        Estudiante aux = inicio;
+        // Bandera para indicar si el valor existe.
+        boolean encontrado = false;
+        // Recorre la lista hasta encontrar el elemento o hasta
+        // llegar al final de la lista.
+        while(aux != null && encontrado != true){
+            // Consulta si el valor del nodo es igual al de referencia.
+            if (nomReferent == aux.getNomEstudiante()){
+                // Canbia el valor de la bandera.
+                encontrado = true;
+            }
+            else{
+                // Avansa al siguiente. nodo.
+                aux = aux.getSiguiente();
+            }
+        }
+        // Retorna el resultado de la bandera.
+        return encontrado;
+    }
+    public boolean buscarPorPosicion(int PosReferent){
+        // Crea una copia de la lista.
+        Estudiante aux = inicio;
+        // Bandera para indicar si el valor existe.
+        boolean encontrado = false;
+        // Recorre la lista hasta encontrar el elemento o hasta
+        // llegar al final de la lista.
+        while(aux != null && encontrado != true){
+            // Consulta si el valor del nodo es igual al de referencia.
+            if (PosReferent == countEstuds){
+                // Canbia el valor de la bandera.
+                encontrado = true;
+            }
+            else{
+                // Avansa al siguiente. nodo.
+                aux = aux.getSiguiente();
+            }
+        }
+        // Retorna el resultado de la bandera.
+        return encontrado;
     }
 
 
