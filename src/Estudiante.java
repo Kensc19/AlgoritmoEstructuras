@@ -60,7 +60,6 @@ public class Estudiante {
 
 
     }
-
     @Override
     public String toString() {
         return "Estudiante{" +
@@ -81,5 +80,6 @@ public class Estudiante {
         this.edad = edad;
         this.siguiente = null;
     }
+
 
 }

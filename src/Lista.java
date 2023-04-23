@@ -3,7 +3,8 @@ import java.util.Scanner;
 
 public class Lista {
     Scanner options = new Scanner(System.in);
-    Estudiante inicio = new Estudiante();
+    Estudiante inicio;
+    Estudiante estudFinal= new Estudiante();
     private int countEstuds;
 
     public void menu() {
@@ -25,7 +26,7 @@ public class Lista {
                         ingresarEstds();
                         break;
                     case 2:
-
+                        mostrarEstudiantesId();
                         break;
                     case 3:
 
@@ -92,18 +93,26 @@ public class Lista {
         // Define un nuevo nodo.
         Estudiante nuevo = new Estudiante(estud.getIdEstudiante(),estud.getNomEstudiante(),
                                estud.getNumCelular(),estud.getCarnet(),estud.getEdad());
+
         if (listaEstudsVacia()) {
             inicio = nuevo;
+            estudFinal=nuevo;
         } else {
-            Estudiante aux = inicio;
-            while (aux.getSiguiente() != null) {
-                aux = aux.getSiguiente();
-            }
-            aux.setSiguiente(nuevo);
+             estudFinal.setSiguiente(nuevo);
+             estudFinal=nuevo;
         }
         countEstuds++;
     }
-
+    public void mostrarEstudiantesId(){
+        int i=0;
+        if(!listaEstudsVacia()) {
+            while (inicio.getSiguiente() != null) {
+                System.out.print(i + ".[ Estudiante: " + inicio.getIdEstudiante() + " ]" + " ->  ");
+                inicio = inicio.getSiguiente();
+                i++;
+            }
+        }
+    }
 
 
 
