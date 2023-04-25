@@ -44,7 +44,7 @@ public class Lista {
 
                         break;
                     case 8:
-
+                            modificarEstudiante();
                         break;
                     case 9:
 
@@ -147,7 +147,7 @@ public class Lista {
     public boolean buscarId(int id){
         Estudiante aux = inicio;// aux recorre la lista desde el inicio
         boolean encontrado = false;
-        while(aux.getSiguiente() != null && !encontrado){
+        while(aux.getSiguiente() != null){
             if (id == aux.getIdEstudiante()){
                 encontrado = true;
                 break;
@@ -177,12 +177,21 @@ public class Lista {
         return index;
     }
     public void modificarEstudiante(){
+        Estudiante auxModificar= inicio;
         System.out.println("\nIngrese el ID del estudiante a modificar : Int");
         int idEstud = options.nextInt();
+        int i=0; int pos= positionEst(idEstud);
         if (buscarId(idEstud)){
             System.out.println("\n El ID Ingresado existe en lista ");
-            int pos= positionEst(idEstud);
-
+            while(auxModificar.getSiguiente()!=null){
+                if (pos == i){
+                    System.out.println("\n modificar id  : Int");
+                    int ide = options.nextInt();
+                    auxModificar.setIdEstudiante(ide);
+                }
+                auxModificar.getSiguiente();
+                i++;
+            }
         }else{
             System.out.println("\n El ID Ingresado NO existe en lista ");
         }
