@@ -21,7 +21,14 @@ public class Menu {
                     String nombre = scanner.nextLine();
                     System.out.println("Ingrese el ID del estudiante");
                     int id = scanner.nextInt();
-
+                    System.out.println("Ingrese la edad del estudiante");
+                    int edad = scanner.nextInt();
+                    System.out.println("Ingrese el lugar de residencia del estudiante");
+                    scanner.nextLine();
+                    String lugar = scanner.nextLine();
+                    System.out.println("Ingrese el correo del estudiante");
+                    String correo = scanner.nextLine();
+                    lista.ingresarEstudiante(new Lista.Estudiante(nombre, id, edad, lugar, correo, new Lista.Estudiante()));
                     break;
                 case 2:
                     break;
