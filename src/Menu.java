@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
-public class Menú {
+public class Menu {
+    Lista lista = new Lista();
 
     public void menu_opciones() {
         boolean bandera = false;
@@ -11,16 +12,15 @@ public class Menú {
                     "8. Modificar datos de un estudiante  \n" + "9. Eliminar estudiante \n" + "10. Indicar la cantidad de estudiantes registrados  \n" + "11. Salir  \n");
 
             Scanner scanner = new Scanner(System.in);
-            int opción = scanner.nextInt();
+            int opcion = scanner.nextInt();
 
-            switch (opción) {
+            switch (opcion) {
                 case 1:
                     System.out.println("Ingrese el nombre del estudiante");
                     scanner.nextLine();
                     String nombre = scanner.nextLine();
                     System.out.println("Ingrese el ID del estudiante");
                     int id = scanner.nextInt();
-                    Estudiante estudiante = new Estudiante(nombre, id);
 
                     break;
                 case 2:
@@ -44,8 +44,8 @@ public class Menú {
                 case 11:
                     bandera = true;
                     break;
-            }
+            }//end switch
 
-        }
-    }
-}
+        }//end while
+    }//end method
+}//end class
