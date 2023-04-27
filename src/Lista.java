@@ -68,14 +68,25 @@ public class Lista {
         public void setNext(Estudiante next) {
             this.next = next;
         }
+
+        @Override
+        public String toString() {
+            return "Estudiante{" +
+                    "nombre='" + nombre + '\'' +
+                    ", idEstudiante=" + idEstudiante +
+                    ", edad=" + edad +
+                    ", lugarDeResidencia='" + lugarDeResidencia + '\'' +
+                    ", correo='" + correo + '}';
+        }
     }//end Estudiante
 
     public void ingresarEstudiante(Estudiante estudiante){
+
         if(head == null)
             head = estudiante;
         else{
             Estudiante ptr = head;
-            while(ptr!=null)
+            while(ptr.next!=null)
                 ptr = ptr.next;
 
             ptr.next = estudiante;
@@ -84,14 +95,40 @@ public class Lista {
 
     }// end ingresarEstudiante
 
-    public void mostrarEstudiantesPorID(){
+    public void mostrarListaDeEstudiantes(int opcion){
         Estudiante ptr = head;
 
-        while(ptr!=null){
-            System.out.print(ptr.getIdEstudiante() + "-->");
-            ptr = ptr.next;
+        switch (opcion){
+            case 2:
+                System.out.println("Lista de estudiantes por ID: ");
+
+                while(ptr.next!=null){
+                    System.out.print(ptr.getIdEstudiante() + "-->");
+                    ptr = ptr.next;
+                }
+                System.out.print("NULL\n\n");
+                break;
+            case 3:
+                System.out.println("Lista de estudiantes por nombre: ");
+
+                while(ptr.next!=null){
+                    System.out.print(ptr.getNombre() + "-->");
+                    ptr = ptr.next;
+                }
+                System.out.print("NULL\n\n");
+                break;
+            case 4:
+                System.out.println("Lista de estudiantes con todos los datos: ");
+
+                while(ptr.next!=null){
+                    System.out.print(ptr.toString() + "-->");
+                    ptr = ptr.next;
+                }
+                System.out.print("NULL\n\n");
+                break;
         }
-        System.out.print("NULL");
-    }//end mostrarEstudiantesPorID
+
+
+    }//end mostrarListaDeEstudiantes
 
 }//end class

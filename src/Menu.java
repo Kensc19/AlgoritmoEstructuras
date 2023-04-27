@@ -31,10 +31,13 @@ public class Menu {
                     lista.ingresarEstudiante(new Lista.Estudiante(nombre, id, edad, lugar, correo, new Lista.Estudiante()));
                     break;
                 case 2:
+                    lista.mostrarListaDeEstudiantes(opcion);
                     break;
                 case 3:
+                    lista.mostrarListaDeEstudiantes(opcion);
                     break;
                 case 4:
+                    lista.mostrarListaDeEstudiantes(opcion);
                     break;
                 case 5:
                     break;
