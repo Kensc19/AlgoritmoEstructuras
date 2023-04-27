@@ -103,7 +103,12 @@ public class Lista {
                 System.out.println("Lista de estudiantes por ID: ");
 
                 while(ptr.next!=null){
-                    System.out.print(ptr.getIdEstudiante() + "-->");
+                    if(ptr.getIdEstudiante() != 0) {
+                        System.out.print(ptr.getIdEstudiante() + "-->");
+                        if(ptr.next != null && ptr.next.getIdEstudiante() != 0){
+                            System.out.print(" --> ");
+                        }
+                    }
                     ptr = ptr.next;
                 }
                 System.out.print("NULL\n\n");
@@ -111,8 +116,13 @@ public class Lista {
             case 3:
                 System.out.println("Lista de estudiantes por nombre: ");
 
-                while(ptr.next!=null){
-                    System.out.print(ptr.getNombre() + "-->");
+                while (ptr != null) {
+                    if (ptr.getNombre() != null) {
+                        System.out.print(ptr.getNombre()+ " --> ");
+                        if (ptr.next != null && ptr.next.getNombre() != null) {
+                            System.out.print(" --> ");
+                        }
+                    }
                     ptr = ptr.next;
                 }
                 System.out.print("NULL\n\n");
@@ -120,8 +130,14 @@ public class Lista {
             case 4:
                 System.out.println("Lista de estudiantes con todos los datos: ");
 
-                while(ptr.next!=null){
-                    System.out.print(ptr.toString() + "-->");
+                while (ptr != null) {
+                    if (ptr.toString().contains("0") && ptr.toString().contains("null")) {
+                    } else {
+                        System.out.print(ptr.toString());
+                        if (ptr.next != null) {
+                            System.out.print(" -->");
+                        }
+                    }
                     ptr = ptr.next;
                 }
                 System.out.print("NULL\n\n");
