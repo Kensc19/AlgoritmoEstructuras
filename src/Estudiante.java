@@ -56,19 +56,15 @@ public class Estudiante {
     public void setSiguiente(Estudiante siguiente) {this.siguiente = siguiente;}
 
     public Estudiante() {
-
-
-
     }
     @Override
     public String toString() {
-        return "Estudiante{" +
-                "idEstudiante=" + idEstudiante +
-                ", nomEstudiante='" + nomEstudiante + '\'' +
-                ", numCelular=" + numCelular +
-                ", carnet='" + carnet + '\'' +
-                ", edad=" + edad +
-                ", siguiente=" + siguiente +
+        return "{" +
+                " iD=" + idEstudiante +
+                ", Nombre='" + nomEstudiante + '\'' +
+                ", Celular=" + numCelular +
+                ", Carnet='" + carnet + '\'' +
+                ", Edad=" + edad +
                 '}';
     }
 
@@ -80,6 +76,4 @@ public class Estudiante {
         this.edad = edad;
         this.siguiente = null;
     }
-
-
 }

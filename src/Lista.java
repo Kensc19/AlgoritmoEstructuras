@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -6,7 +7,6 @@ public class Lista {
     Estudiante inicio;
     Estudiante estudFinal= new Estudiante();
     private int countEstuds=0;
-
     public void menu() {
         System.out.println("1 Ingresar Estudiante");
         System.out.println("2 Mostrar todos los Estudiantes por ID");
@@ -20,7 +20,7 @@ public class Lista {
         System.out.println("10 Indicar la cantidad de Estudiantes registrados");
         System.out.println("11 Salir");
             int optionUser = options.nextInt();
-            if (optionUser != 11) {
+            while (optionUser != 11) {
                 switch (optionUser) {
                     case 1:
                         ingresarEstds();
@@ -44,50 +44,62 @@ public class Lista {
 
                         break;
                     case 8:
-                            modificarEstudiante();
+                        modificarEstudiante();
                         break;
                     case 9:
 
                         break;
                     case 10:
                         System.out.println(showCountStuds());
-                        menu();
+                        System.out.println("\n¿ Desea volver al menú ?: Int \n 1)_____ SÍ\n 2)______NO");
+                        options.nextLine();
+                        int option = options.nextInt();
+                        if (option == 1) {
+                            menu();
+                        } else {
+                            optionUser=11;
+                        }
                         break;
                     default:
                         System.out.println("\nIngresó una opción que no está en el menú");
                         break;
                 }// end switch
             }// end if
-            else {
                 System.out.println("Decidió salir");
-            }
     }
 
     public void ingresarEstds() {
         boolean flag = true;
-        do {
-            System.out.println("\nIngrese el ID: Int");
-            int idEstuds = options.nextInt();
-            System.out.println("\nIngrese el nombre: Str");
+        try {
+            do {
+                System.out.println("\nIngrese el ID: Int");
+                int idEstuds = options.nextInt();
+                System.out.println("\nIngrese el nombre: Str");
+                options.nextLine();
+                String nombre = options.nextLine();
+                System.out.println("\nIngrese el numero de celular: Int");
+                int numCelular = options.nextInt();
+                System.out.println("\nIngrese el carnet: str");
+                options.nextLine();
+                String carnet = options.nextLine();
+                System.out.println("\nIngrese la edad: Int");
+                int edad = options.nextInt();
+                agregarAlFinal(new Estudiante(idEstuds, nombre, numCelular, carnet, edad));
+                System.out.println("\n¿ Desea ingresar más estudiantes ?: Int \n 1)_____ SÍ\n 2)______NO");
+                options.nextLine();
+                int option = options.nextInt();
+                if (option != 1) {
+                    flag = !flag;
+                }
+            } while (flag);
+            menu();
+        }catch (InputMismatchException ee){
+            System.out.println("error en el tipo de dato");
             options.nextLine();
-            String nombre = options.nextLine();
-            System.out.println("\nIngrese el numero de celular: Int");
-            int numCelular = options.nextInt();
-            System.out.println("\nIngrese el carnet: str");
-            options.nextLine();
-            String carnet = options.nextLine();
-            System.out.println("\nIngrese la edad: Int");
-            int edad = options.nextInt();
-            agregarAlFinal(new Estudiante(idEstuds, nombre, numCelular, carnet, edad));
-            System.out.println("\n¿ Desea ingresar más estudiantes ?: Int \n 1)_____ SÍ\n 2)______NO");
-            options.nextLine();
-            int option = options.nextInt();
-            if (option != 1) {
-                flag = !flag;
-            }} while (flag);
-        menu();
+            ingresarEstds();
+        }
 
-    }
+    }// end ingresar estuds
     public boolean listaEstudsVacia(){
         return inicio==null;
     }
@@ -105,42 +117,80 @@ public class Lista {
              estudFinal=nuevo;
         }
         countEstuds++;
-    }
+    }// end agregar al final
     public void mostrarEstudiantesId(){
         int i=0;
         Estudiante aux= inicio;
         if(!listaEstudsVacia()) {
-            while (aux.getSiguiente() != null) {
+            while (aux.getSiguiente() != null||aux.getSiguiente()==null) {
+                if(aux.equals(estudFinal)){
+                    System.out.print(i + ".[ Estudiante: " + aux.getIdEstudiante() + " ]" + " ->  ");
+                    break;
+                }
                 System.out.print(i + ".[ Estudiante: " + aux.getIdEstudiante() + " ]" + " ->  ");
                 aux = aux.getSiguiente();
                 i++;
             }
             System.out.print( "NULL");
         }
-    }
+        System.out.println("\n¿ Desea volver al menú ?: Int \n 1)_____ SÍ\n 2)______NO");
+        options.nextLine();
+        int option = options.nextInt();
+        if (option == 1) {
+            menu();
+        } else {
+            System.out.println("Salió");
+        }
+    }// end mostrar id
     public void mostrarEstudiantesNombre(){
         int i=0;
+        Estudiante aux= inicio;
         if(!listaEstudsVacia()) {
-            while (inicio.getSiguiente() != null) {
-                System.out.print(i + ".[ Estudiante: " + inicio.getNomEstudiante() + " ]" + " ->  ");
-                inicio = inicio.getSiguiente();
+            while (aux.getSiguiente() != null||aux.getSiguiente()==null) {
+                if(aux.equals(estudFinal)){
+                    System.out.print(i + ".[ Estudiante: " + aux.getNomEstudiante() + " ]" + " ->  ");
+                    break;
+                }
+                System.out.print(i + ".[ Estudiante: " + aux.getNomEstudiante() + " ]" + " ->  ");
+                aux = aux.getSiguiente();
+                i++;
+            }// while
+            System.out.print( "NULL");
+        }// if
+        System.out.println("\n¿ Desea volver al menú ?: Int \n 1)_____ SÍ\n 2)______NO");
+        options.nextLine();
+        int option = options.nextInt();
+        if (option == 1) {
+            menu();
+        } else {
+            System.out.println("Salió");
+        }
+    }
+    public String showCountStuds(){
+        return countEstuds!=0?"La cantidad de estudiantes ingresados es: "+countEstuds+" estudiantes":"Lista Vacia{}";
+    }
+    public void mostrarEstudiantes(){
+        int i=0;
+        Estudiante aux= inicio;
+        if(!listaEstudsVacia()) {
+            while (aux.getSiguiente() != null||aux.getSiguiente()==null) {
+                if(aux.equals(estudFinal)){
+                    System.out.print(i + ".[ Estudiante: " + aux.toString() + " ]" + " ->  ");
+                    break;
+                }
+                System.out.print(i + ".[ Estudiante: " + aux.toString() + " ]" + " --->  \n");
+                aux = aux.getSiguiente();
                 i++;
             }
             System.out.print( "NULL");
         }
-    }
-    public String showCountStuds(){
-        return "La cantidad de estudiantes ingresados es: "+countEstuds+" estudiantes";
-    }
-    public void mostrarEstudiantes(){
-        int i=0;
-        if(!listaEstudsVacia()) {
-            while (inicio.getSiguiente() != null) {
-                System.out.print(i  +"--" +inicio.toString()+" " + " ->  ");
-                inicio = inicio.getSiguiente();
-                i++;
-            }
-            System.out.print( "NULL");
+        System.out.println("\n¿ Desea volver al menú ?: Int \n 1)_____ SÍ\n 2)______NO");
+        options.nextLine();
+        int option = options.nextInt();
+        if (option == 1) {
+            menu();
+        } else {
+            System.out.println("Salió");
         }
     }
 
@@ -164,7 +214,7 @@ public class Lista {
         int index = 0;int i=0;
         while(aux.getSiguiente() != null){
             if (id == aux.getIdEstudiante()){
-                  index=i+1;
+                  index=i;
                 break;
             }else{
                 // sino lo encontró entonces
@@ -178,25 +228,59 @@ public class Lista {
     }
     public void modificarEstudiante(){
         Estudiante auxModificar= inicio;
-        System.out.println("\nIngrese el ID del estudiante a modificar : Int");
-        int idEstud = options.nextInt();
-        int i=0; int pos= positionEst(idEstud);
-        if (buscarId(idEstud)){
-            System.out.println("\n El ID Ingresado existe en lista ");
-            while(auxModificar.getSiguiente()!=null){
-                if (pos == i){
-                    System.out.println("\n modificar id  : Int");
-                    int ide = options.nextInt();
-                    auxModificar.setIdEstudiante(ide);
-                }
-                auxModificar.getSiguiente();
-                i++;
-            }
-        }else{
-            System.out.println("\n El ID Ingresado NO existe en lista ");
-        }
-    }
+        if(countEstuds==0){
+            System.out.println("\n Lista vacia no se puede modifica ningun estudiante");
+        }else {
+            System.out.println("\nIngrese el ID del estudiante a modificar : Int");
+            int idEstud = options.nextInt();
+            int i = 0; int pos = positionEst(idEstud); // i es un una bandera para llegar a la posicion de la lista
+            if (buscarId(idEstud)) {
+                System.out.println("\n El ID Ingresado existe en lista ");
+                while (auxModificar.getSiguiente() != null || countEstuds == 1) {
+                    if (pos == i) {
+                        try {
+                            System.out.println("\nIngrese el ID: Int");
+                            int idEstuds = options.nextInt();
+                            auxModificar.setIdEstudiante(idEstuds);
+                            System.out.println("\nIngrese el nombre: Str");
+                            options.nextLine();
+                            String nombre = options.nextLine();
+                            auxModificar.setNomEstudiante(nombre);
+                            System.out.println("\nIngrese el numero de celular: Int");
+                            int numCelular = options.nextInt();
+                            auxModificar.setNumCelular(numCelular);
+                            System.out.println("\nIngrese el carnet: str");
+                            options.nextLine();
+                            String carnet = options.nextLine();
+                            auxModificar.setCarnet(carnet);
+                            System.out.println("\nIngrese la edad: Int");
+                            int edad = options.nextInt();
+                            auxModificar.setEdad(edad);
+                            System.out.println("Se realiazaron los cambios");
+                            menu();
+                            break;
+                        } catch (NumberFormatException e) {
+                            System.out.println("Error en los datos");
+                            modificarEstudiante();
+                        }
+                    }// end if de posicion
+                    auxModificar = auxModificar.getSiguiente();
+                    i++;
+                }// while que recorre la lista
+            } else {
+                System.out.println("\n El ID Ingresado NO existe en lista ");
+                System.out.println("\n¿ Desea volver al menú ?: Int \n 1)_____ SÍ\n 2)______NO");
+                options.nextLine();
+                int option = options.nextInt();
+                if (option == 1) {
+                    menu();
+                } else {System.out.println("Salió");}
+            }// else existe estudiante
+        }// else de lista vacia
+    }// modificar()
 
+
+    //metodo sin usar
     public boolean buscarPorPosicion(int PosReferent){
         // Crea una copia de la lista.
         Estudiante aux = inicio;
@@ -218,7 +302,5 @@ public class Lista {
         // Retorna el resultado de la bandera.
         return encontrado;
     }
-
-
-}
+}// class
 
