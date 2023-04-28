@@ -19,53 +19,55 @@ public class Lista {
         System.out.println("9 Eliminar Estudiante");
         System.out.println("10 Indicar la cantidad de Estudiantes registrados");
         System.out.println("11 Salir");
-            int optionUser = options.nextInt();
-            while (optionUser != 11) {
-                switch (optionUser) {
-                    case 1:
-                        ingresarEstds();
-                        break;
-                    case 2:
-                        mostrarEstudiantesId();
-                        break;
-                    case 3:
-                        mostrarEstudiantesNombre();
-                        break;
-                    case 4:
-                        mostrarEstudiantes();
-                        break;
-                    case 5:
+        int optionUser = options.nextInt();
+        if (optionUser != 11) {
+            switch (optionUser) {
+                case 1:
+                    ingresarEstds();
+                    break;
+                case 2:
+                    mostrarEstudiantesId();
+                    break;
+                case 3:
+                    mostrarEstudiantesNombre();
+                    break;
+                case 4:
+                    mostrarEstudiantes();
+                    break;
+                case 5:
+                    buscarEstudianteID();
+                    break;
+                case 6:
+                    buscarEstudianteNombre();
+                    break;
+                case 7:
 
-                        break;
-                    case 6:
+                    break;
+                case 8:
+                    modificarEstudiante();
+                    break;
+                case 9:
 
-                        break;
-                    case 7:
-
-                        break;
-                    case 8:
-                        modificarEstudiante();
-                        break;
-                    case 9:
-
-                        break;
-                    case 10:
-                        System.out.println(showCountStuds());
-                        System.out.println("\n¿ Desea volver al menú ?: Int \n 1)_____ SÍ\n 2)______NO");
-                        options.nextLine();
-                        int option = options.nextInt();
-                        if (option == 1) {
-                            menu();
-                        } else {
-                            optionUser=11;
-                        }
-                        break;
-                    default:
-                        System.out.println("\nIngresó una opción que no está en el menú");
-                        break;
-                }// end switch
-            }// end if
-                System.out.println("Decidió salir");
+                    break;
+                case 10:
+                    System.out.println(showCountStuds());
+                    System.out.println("\n¿ Desea volver al menú ?: Int \n 1)_____ SÍ\n 2)______NO");
+                    options.nextLine();
+                    int option = options.nextInt();
+                    if (option == 1) {
+                        menu();
+                    } else {
+                        System.out.println("Decidió salir");
+                    }
+                    break;
+                default:
+                    System.out.println("\nIngresó una opción que no está en el menú");
+                    break;
+            }// end switch
+        }// end if
+        else {
+            System.out.println("Decidió salir");
+        }
     }
 
     public void ingresarEstds() {
@@ -209,6 +211,63 @@ public class Lista {
         }
         return encontrado;
     }
+    public void buscarEstudianteID() {
+        System.out.println("Ingrese el id del estudiante a buscar");
+        int idBuscado = options.nextInt();
+        options.nextLine(); // consume la nueva línea después de nextInt()
+        Estudiante aux = inicio;
+            if (!listaEstudsVacia()) {
+                while (aux != null) {
+                    if (aux.getIdEstudiante() == idBuscado) {
+                        System.out.print(".[ Estudiante: " + aux.toString() + " ]" + " ->  ");
+                        break;
+                    }else{
+
+                        System.out.println("El ID a consultar, no corresponde a ningún estudiante");
+                    }
+                    aux = aux.getSiguiente();
+                }
+                System.out.println("Null");
+            }
+        System.out.println("\n¿ Desea consultar por otro estudiante ?: Int \n 1)_____ SÍ\n 2)______NO");
+        options.nextLine();
+        int option = options.nextInt();
+        if (option == 1) {
+            buscarEstudianteID();
+        } else {
+            menu();
+        }
+    }
+    public void buscarEstudianteNombre() {
+        System.out.println("Ingrese el nombre del estudiante a buscar: Str");
+        options.nextLine();
+        String nomBuscado = options.nextLine();
+        Estudiante aux = inicio;
+        if (!listaEstudsVacia()) {
+            while (aux != null) {
+                if (aux.getNomEstudiante().equals(nomBuscado))
+                    {
+                    System.out.print(".[ Estudiante: " + aux.toString() + " ]" + " ->  ");
+                    break;
+                }else{
+
+                    System.out.println("El nombre a consultar, no corresponde a ningún estudiante");
+                }
+                aux = aux.getSiguiente();
+            System.out.println("Null");
+        }
+        System.out.println("\n¿ Desea consultar por otro estudiante ?: Int \n 1)_____ SÍ\n 2)______NO");
+        int option = options.nextInt();
+        options.nextLine();
+        if (option == 1) {
+            buscarEstudianteID();
+        } else {
+            option = 2;
+            menu();
+             } //End else
+        } //end if (!listaEstudsVacia())
+    } //end buscarEstudianteNombre()
+
     public int positionEst(int id){
         Estudiante aux = inicio;// aux recorre la lista desde el inicio
         int index = 0;int i=0;
@@ -222,7 +281,6 @@ public class Lista {
                 aux = aux.getSiguiente();
                 i++;
             }
-
         }
         return index;
     }
