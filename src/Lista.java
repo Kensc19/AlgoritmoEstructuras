@@ -215,20 +215,25 @@ public class Lista {
         System.out.println("Ingrese el id del estudiante a buscar");
         int idBuscado = options.nextInt();
         options.nextLine(); // consume la nueva línea después de nextInt()
-        Estudiante aux = inicio;
-            if (!listaEstudsVacia()) {
-                while (aux != null) {
+        Estudiante aux= inicio;
+        if(countEstuds!=0) {
+            while (aux.getSiguiente() != null||aux.getSiguiente()==null) {
+                if(buscarId(aux.getIdEstudiante())) {
                     if (aux.getIdEstudiante() == idBuscado) {
                         System.out.print(".[ Estudiante: " + aux.toString() + " ]" + " ->  ");
                         break;
-                    }else{
-
-                        System.out.println("El ID a consultar, no corresponde a ningún estudiante");
+                    } else {
+                        aux = aux.getSiguiente();
                     }
-                    aux = aux.getSiguiente();
+                }else{
+                    System.out.println("No existe el estudiante  con el ID ''"+idBuscado);
+                    break;
                 }
-                System.out.println("Null");
-            }
+            }// while
+            System.out.print( "NULL");
+        }else{
+            System.out.println("Lista vacia");
+        }
         System.out.println("\n¿ Desea consultar por otro estudiante ?: Int \n 1)_____ SÍ\n 2)______NO");
         options.nextLine();
         int option = options.nextInt();
@@ -237,7 +242,7 @@ public class Lista {
         } else {
             menu();
         }
-    }
+    }// end buscarPorID()
     public void buscarEstudianteNombre() {
         System.out.println("Ingrese el nombre del estudiante a buscar: Str");
         options.nextLine();
