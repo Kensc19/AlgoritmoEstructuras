@@ -110,7 +110,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682399948753</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="CAMBIO en modifcar">
+      <created>1682651664460</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1682651664460</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -129,6 +136,7 @@
     <MESSAGE value="cambio en el if" />
     <MESSAGE value="fijarse en modificar estd" />
     <MESSAGE value="adelanto" />
-    <option name="LAST_COMMIT_MESSAGE" value="adelanto" />
+    <MESSAGE value="CAMBIO en modifcar" />
+    <option name="LAST_COMMIT_MESSAGE" value="CAMBIO en modifcar" />
   </component>
 </project>
