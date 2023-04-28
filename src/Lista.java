@@ -147,4 +147,21 @@ public class Lista {
 
     }//end mostrarListaDeEstudiantes
 
+    //Recibe un entero que significa la posición del estudiante que se desea obtener, y se recorrerá la lista hasta la posición ingresaada y se imprimirá el estudiante
+    public void mostrarPorPosicion(int posicionBuscada){
+        Estudiante ptr = head;
+        int contadorPosicion = 1;
+
+        while(ptr!=null){
+            if(contadorPosicion == posicionBuscada && ptr.getNombre() != null){
+                System.out.println("El estudiante encontrado es: \n" + ptr.toString() + "\n");
+                break;
+            }
+            if(ptr.getNombre() != null){ //Como cada vez que se ingresa un estudiante se agrega uno nulo en el medio de cada estudiante, si por el que pasa es nulo se lo salta
+                contadorPosicion++;
+            }
+            ptr = ptr.next;
+        }//end while
+    }//end mostrarPorPosicion
+
 }//end class
