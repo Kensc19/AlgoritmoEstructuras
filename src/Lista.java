@@ -280,17 +280,16 @@ public class Lista {
         String nomBuscado = options.nextLine();
         Estudiante aux = inicio;
             while (aux.getSiguiente() != null|| aux.getSiguiente()==null) {
-                if(buscarId(aux.getIdEstudiante())) {
                     if (aux.getNomEstudiante().equals(nomBuscado)) {
-                        System.out.print(".[ Estudiante: " + aux.toString() + " ]" + " ->  ");
+                        System.out.print(".[ Estudiante: " + aux + " ]" + " ->  ");
                         break;
                     } else {
+                        if(aux.getSiguiente()==null){
+                            System.out.println("No existe el estudiante de nombre: ''"+nomBuscado+"''");
+                            break;
+                        }
                         aux = aux.getSiguiente();
                     }
-                }else{
-                    System.out.println("No existe el estudiante de nombre: ''"+nomBuscado+"''");
-                    break;
-                }
             }// while
             System.out.print( "NULL");
         }else{

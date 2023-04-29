@@ -1,13 +1,8 @@
 public class Estudiante {
-
     private int idEstudiante;
-
     private String nomEstudiante;
-
     private int numCelular;
-
     private String carnet;
-
     private int edad;
     private Estudiante siguiente;
 
@@ -67,7 +62,6 @@ public class Estudiante {
                 ", Edad=" + edad +
                 '}';
     }
-
     public Estudiante(int idEstudiante, String nomEstudiante, int numCelular, String carnet, int edad) {
         this.idEstudiante = idEstudiante;
         this.nomEstudiante = nomEstudiante;
@@ -76,4 +70,4 @@ public class Estudiante {
         this.edad = edad;
         this.siguiente = null;
     }
-}
+}// end class
