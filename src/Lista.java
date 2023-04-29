@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Lista {
     Estudiante head;
     public static class Estudiante {
@@ -163,5 +165,66 @@ public class Lista {
             ptr = ptr.next;
         }//end while
     }//end mostrarPorPosicion
+
+    //Recorre la lista hasta encontrar el estudiante que busca para cuando esto se haga, se modifique el dato correspondiente
+    public void buscarEstudianteParaModificarDato(String nombre, int dato){
+        Estudiante ptr = head;
+
+        while(ptr!=null){
+            if(nombre.equalsIgnoreCase(ptr.getNombre())) {
+                modificarDato(dato, ptr);
+                break;
+            }
+
+            ptr = ptr.next;
+        }//end while
+    }//end buscarEstudianteParaModificarDato
+
+    //modifica el dato que se solicite
+    public void modificarDato(int dato,Estudiante ptr){
+        Scanner scanner = new Scanner(System.in);
+
+        switch(dato){
+            case 1:
+                System.out.println("Ingrese el nuevo nombre");
+                String nuevoNombre = scanner.nextLine();
+                ptr.setNombre(nuevoNombre);
+                break;
+            case 2:
+                System.out.println("Ingrese el nuevo ID");
+                int nuevoID = scanner.nextInt();
+                ptr.setIdEstudiante(nuevoID);
+                break;
+            case 3:
+                System.out.println("Ingrese la nueva edad");
+                int nuevaEdad = scanner.nextInt();
+                ptr.setEdad(nuevaEdad);
+                break;
+            case 4:
+                System.out.println("Ingrese el nuevo lugar de residencia");
+                String nuevaResidencia = scanner.nextLine();
+                ptr.setLugarDeResidencia(nuevaResidencia);
+                break;
+            case 5:
+                System.out.println("Ingrese el nuevo correo");
+                String nuevoCorreo = scanner.nextLine();
+                ptr.setCorreo(nuevoCorreo);
+                break;
+        }//end switch
+    }//end modificarDato
+
+    public int totalEstudiantesRegistrados(){
+        Estudiante ptr = head;
+        int contadorEstudiantes = 0;
+
+        while(ptr!=null){
+            if(ptr.getNombre() != null){ //Como cada vez que se ingresa un estudiante se agrega uno nulo en el medio de cada estudiante, si por el que pasa es nulo se lo salta
+                contadorEstudiantes++;
+            }
+            ptr = ptr.next;
+        }//end while
+
+        return contadorEstudiantes;
+    }
 
 }//end class

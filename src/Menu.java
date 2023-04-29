@@ -49,10 +49,30 @@ public class Menu {
                     lista.mostrarPorPosicion(posicion);
                     break;
                 case 8:
+                    System.out.println("Ingrese el nombre del estudiante al que desea modificar los datos");
+                    scanner.nextLine();
+                    String nombreEstudiante = scanner.nextLine();
+                    boolean finalizar = false;
+                    while(!finalizar) {
+                        System.out.println("Ingrese el número del dato que desea modificar, o un 0 para finalizar\n" +
+                                            "1. Nombre\n"+
+                                            "2. ID\n"+
+                                            "3. Edad\n"+
+                                            "4. Lugar de residencia\n"+
+                                            "5. Correo\n");
+                        int numeroDeDato = scanner.nextInt();
+
+                        if(numeroDeDato == 0)
+                            finalizar = true;
+                        else
+                            lista.buscarEstudianteParaModificarDato(nombreEstudiante,numeroDeDato);
+                    }
+
                     break;
                 case 9:
                     break;
                 case 10:
+                    System.out.println("La cantidad de estudiantes registrados es: " + lista.totalEstudiantesRegistrados() + "\n");
                     break;
                 case 11:
                     bandera = true;
