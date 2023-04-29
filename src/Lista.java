@@ -6,8 +6,6 @@ public class Lista {
     Scanner options = new Scanner(System.in);
     Estudiante inicio;
     Estudiante estudFinal= new Estudiante();
-    Estudiante estudAnterior= new Estudiante();
-
     private int countEstuds=0;
     public void menu() {
         System.out.println("1 Ingresar Estudiante");
@@ -79,7 +77,7 @@ public class Lista {
             System.out.println("Decidió salir");
         }
     }// nenu
-    public boolean listaEstudsVacia(){
+    public boolean listaEstudsVacia(){// revisa si la lista está vacía
         return inicio==null;
     }
     public void ingresarEstds() {
@@ -172,7 +170,6 @@ public class Lista {
         }else {
             System.out.println("lista vacia");
         }
-
         System.out.println("\n¿ Desea volver al menú ?: Int \n 1)_____ SÍ\n 2)______NO");
         options.nextLine();
         int option = options.nextInt();
@@ -181,10 +178,11 @@ public class Lista {
         } else {
             System.out.println("Salió");
         }
-    }
+    }// end buscarPorNombre
+
     public String showCountStuds(){
         return countEstuds!=0?"La cantidad de estudiantes ingresados es: "+countEstuds+" estudiantes":"Lista Vacia{}";
-    }
+    }// end showCountStuds
     public void mostrarEstudiantes(){
         int i=0;
         Estudiante aux= inicio;
@@ -273,7 +271,7 @@ public class Lista {
         Estudiante aux = inicio;
             while (aux.getSiguiente() != null|| aux.getSiguiente()==null) {
                 if(buscarId(aux.getIdEstudiante())) {
-                    if (aux.getNomEstudiante()== nomBuscado) {
+                    if (aux.getNomEstudiante().equals(nomBuscado)) {
                         System.out.print(".[ Estudiante: " + aux.toString() + " ]" + " ->  ");
                         break;
                     } else {
@@ -304,7 +302,7 @@ public class Lista {
         Estudiante aux = inicio;// aux recorre la lista desde el inicio
         int index = 0;int i=0;
         if(countEstuds!=0){
-            while (aux.getSiguiente() != null || aux== null) {
+            while (aux.getSiguiente() != null || aux.getSiguiente()== null) {
                 if (id == aux.getIdEstudiante()) {
                     index = i;
                     break;
@@ -383,7 +381,7 @@ public class Lista {
                 while (aux.getSiguiente() != null || countEstuds>0) {
                     int index = positionEst(posReferent);
                     if (index == i) {
-                        System.out.println(aux.toString());
+                        System.out.println(aux);
                         break;
                     }
                     aux = aux.getSiguiente();
@@ -401,63 +399,74 @@ public class Lista {
         } else {System.out.println("Salió");}
     }
     public void eliminarEstudiante(){
-        Estudiante aux= inicio;
-        if(!listaEstudsVacia()) {
+        Estudiante aux = inicio;
+        if (!listaEstudsVacia()) {
             System.out.println("Ingrese el ID del estudiante a eliminar: int");
             options.nextLine();
             int iDAbuscar = options.nextInt();
-            int indice=0;
-            if(buscarId(iDAbuscar)){
-                int posAnt=positionEst(iDAbuscar);
-                while(aux.getSiguiente()!=null|| countEstuds==1){
-                    if(indice==posAnt) {
-                        estudAnterior = encuentraAnterior(aux);
-                        estudAnterior.setSiguiente(aux.getSiguiente());
-                        countEstuds--;
-                        break;
-                    }else{
-                        indice++;
-                        aux=aux.getSiguiente();
-                    }
-                }
-            }else{
+            int indice = 0;
+            if (buscarId(iDAbuscar)) {
+                int posAnt = positionEst(iDAbuscar);
+                if(1==(posAnt+1)){// para eliminar al inicio
+                    Estudiante posIni = inicio.getSiguiente();
+                    inicio=posIni;
+                    countEstuds--;
+                    System.out.println("ELIMINADO");
+                }else if(countEstuds==(posAnt+1)) {// para eliminar al final
+                    Estudiante posF = encuentraAnterior(estudFinal);
+                    posF.setSiguiente(null);
+                    estudFinal = posF;
+                    countEstuds--;
+                    System.out.println("ELIMINADO ");
+                }else{
+                    while (aux.getSiguiente() != null) {
+                        if (indice == posAnt) {
+                            Estudiante estudAnterior = encuentraAnterior(aux);
+                            estudAnterior.setSiguiente(aux.getSiguiente());
+                            countEstuds--;
+                            System.out.println("ELIMINADO");
+                            break;
+                        } else {
+                            indice++;
+                            aux = aux.getSiguiente();}
+                    }// end while
+                }// end if borrar al inicio
+            } else {
                 System.out.println("No existe el estudiante ");
             }
-        }else{
+        } else {
             System.out.println("Lista vacia");
         }
-        System.out.println("***Eliminado***");
-        System.out.println("\n¿ Desea ir al menú ?: Int \n 1)_____ SÍ\n 2)______NO");
+        System.out.println("\n¿ Desea ir al menú ?: Int \n 1)_ SÍ\n 2)__NO");
         int option = options.nextInt();
         options.nextLine();
         if (option == 1) {
             menu();
         } else {
-            System.out.println("Salió");}
+            System.out.println("Salió");
+        }
     }// end eliminar
 
     public Estudiante encuentraAnterior(Estudiante estudiante){
         Estudiante aux= inicio;
         if(!listaEstudsVacia()) {
             int indice=0;
-            while(aux.getSiguiente()!=null|| countEstuds==1){
+            while(aux.getSiguiente()!=null|| aux.getSiguiente()==null){
                 if(buscarId(estudiante.getIdEstudiante())){
-                    int indexEstAnterior= positionEst(estudiante.getIdEstudiante())-1;
-                    if(indice==indexEstAnterior){
+                    int indexEstAnterior= positionEst(estudiante.getIdEstudiante());
+                    if(indice==indexEstAnterior-1){
                         break;
                     }else{
                         aux= aux.getSiguiente();
                         indice++;
                     }
                 }else{
-                    return null;
-                }
+                    return null;}
             }// while
         }else{
             System.out.println("Lista vacia");
         }
         return aux;
-    }
-
+    }// end encuentraAbterior
 }// class
 
