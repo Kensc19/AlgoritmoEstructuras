@@ -1,7 +1,12 @@
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ * Universidad De Costa Rica
+ * @author Brandon Vargas C28223
+ * @author Kendall Sanchez C27227
+ * Laboratorio 3 Algoritmos y estructuras de datos
+ **/
 public class Lista {
     Scanner options = new Scanner(System.in);
     Estudiante inicio;
@@ -19,62 +24,68 @@ public class Lista {
         System.out.println("9 Eliminar Estudiante");
         System.out.println("10 Indicar la cantidad de Estudiantes registrados");
         System.out.println("11 Salir");
-        int optionUser = options.nextInt();
-        if (optionUser != 11) {
-            switch (optionUser) {
-                case 1:
-                    ingresarEstds();
-                    break;
-                case 2:
-                    mostrarEstudiantesId();
-                    break;
-                case 3:
-                    mostrarEstudiantesNombre();
-                    break;
-                case 4:
-                    mostrarEstudiantes();
-                    break;
-                case 5:
-                    buscarEstudianteID();
-                    break;
-                case 6:
-                    buscarEstudianteNombre();
-                    break;
-                case 7:
-                    buscarPorPosicion();
-                    break;
-                case 8:
-                    modificarEstudiante();
-                    break;
-                case 9:
-                    eliminarEstudiante();
-                    break;
-                case 10:
-                    System.out.println(showCountStuds());
-                    System.out.println("\n¿ Desea volver al menú ?: Int \n 1)_____ SÍ\n 2)______NO");
-                    options.nextLine();
-                    int option = options.nextInt();
-                    if (option == 1) {
-                        menu();
-                    } else {
-                        System.out.println("Decidió salir");
-                    }
-                    break;
-                default:
-                    System.out.println("\nIngresó una opción que no está en el menú");
-                    System.out.println("\n¿ Desea volver al menú ?: Int \n 1)_____ SÍ\n 2)______NO");
-                    options.nextLine();
-                    int option8 = options.nextInt();
-                    if (option8 == 1) {
-                        menu();
-                    } else {
-                        System.out.println("Decidió salir");
-                    }
-                    break;
-            }// end switch
-        }// end if
-        else {
-            System.out.println("Decidió salir");
+        try {
+            int optionUser = options.nextInt();
+            if (optionUser != 11) {
+                switch (optionUser) {
+                    case 1:
+                        ingresarEstds();
+                        break;
+                    case 2:
+                        mostrarEstudiantesId();
+                        break;
+                    case 3:
+                        mostrarEstudiantesNombre();
+                        break;
+                    case 4:
+                        mostrarEstudiantes();
+                        break;
+                    case 5:
+                        buscarEstudianteID();
+                        break;
+                    case 6:
+                        buscarEstudianteNombre();
+                        break;
+                    case 7:
+                        buscarPorPosicion();
+                        break;
+                    case 8:
+                        modificarEstudiante();
+                        break;
+                    case 9:
+                        eliminarEstudiante();
+                        break;
+                    case 10:
+                        System.out.println(showCountStuds());
+                        System.out.println("\n¿ Desea volver al menú ?: Int \n 1)_____ SÍ\n 2)______NO");
+                        options.nextLine();
+                        int option = options.nextInt();
+                        if (option == 1) {
+                            menu();
+                        } else {
+                            System.out.println("Decidió salir");
+                        }
+                        break;
+                    default:
+                        System.out.println("\nIngresó una opción que no está en el menú");
+                        System.out.println("\n¿ Desea volver al menú ?: Int \n 1)_____ SÍ\n 2)______NO");
+                        options.nextLine();
+                        int option8 = options.nextInt();
+                        if (option8 == 1) {
+                            menu();
+                        } else {
+                            System.out.println("Decidió salir");
+                        }
+                        break;
+                }// end switch
+            }// end if
+            else {
+                System.out.println("Decidió salir");
+            }
+        }catch (InputMismatchException d){
+            System.out.println("error en el tipo de dato");
+            options.nextLine();
+            menu();
         }
     }// nenu
     public boolean listaEstudsVacia(){// revisa si la lista está vacía
@@ -108,7 +119,7 @@ public class Lista {
         }catch (InputMismatchException ee){
             System.out.println("error en el tipo de dato");
             options.nextLine();
-            ingresarEstds();
+           ingresarEstds();
         }
 
     }// end ingresar estuds
@@ -150,8 +161,7 @@ public class Lista {
         if (option == 1) {
             menu();
         } else {
-            System.out.println("Salió");
-        }
+            System.out.println("Salió");}
     }// end mostrar id
     public void mostrarEstudiantesNombre(){
         int i=0;
@@ -245,7 +255,7 @@ public class Lista {
                         aux = aux.getSiguiente();
                     }
                 }else{
-                    System.out.println("No existe el estudiante con el ID ''"+idBuscado);
+                    System.out.println("No existe el estudiante con el ID ''"+idBuscado+"''");
                     break;
                 }
             }// while
@@ -301,17 +311,20 @@ public class Lista {
     public int positionEst(int id){
         Estudiante aux = inicio;// aux recorre la lista desde el inicio
         int index = 0;int i=0;
-        if(countEstuds!=0){
-            while (aux.getSiguiente() != null || aux.getSiguiente()== null) {
-                if (id == aux.getIdEstudiante()) {
-                    index = i;
-                    break;
-                } else {
-                    aux = aux.getSiguiente(); // adelanta el "puntero" al siguiente estudiante
-                    i++;
-                }
-            }// while
-        }
+        if(countEstuds!=0) {
+            if (countEstuds == 1) {
+                return 0;
+            } else {while (aux.getSiguiente() != null|| countEstuds>0) {
+                    if (id == aux.getIdEstudiante()) {
+                        index = i;
+                        break;
+                    } else {
+                        aux = aux.getSiguiente(); // adelanta el "puntero" al siguiente estudiante
+                        i++;
+                    }
+                }// while
+            }// else
+        }// if si está vacía
         return index;
     }// positionEst(int):int
     public void modificarEstudiante(){
@@ -319,10 +332,11 @@ public class Lista {
         if(!listaEstudsVacia()){
             System.out.println("\nIngrese el ID del estudiante a modificar : Int");
             int idEstud = options.nextInt();
-            int i = 0; int pos = positionEst(idEstud); // i es un una bandera para llegar a la posicion de la lista
+            int i = 0;
             if (buscarId(idEstud)) {
+                int pos = positionEst(idEstud); // i es un una bandera para llegar a la posicion de la lista
                 System.out.println("\n El ID Ingresado existe en lista ");
-                while (auxModificar.getSiguiente() != null || countEstuds == 1) {
+                while (auxModificar.getSiguiente() != null || auxModificar.getSiguiente()== null) {
                     if (pos == i) {
                         try {
                             System.out.println("\nIngrese el ID: Int");
@@ -373,24 +387,28 @@ public class Lista {
         int i = 0;
         Estudiante aux = inicio;
         if (!listaEstudsVacia()) {
-            System.out.println("\nIngrese la posición : Int");
+            System.out.println("\nIngrese la posición : Int\n La lista inicia en 0");
             int posReferent = options.nextInt();
-            if (posReferent > countEstuds || posReferent < 0) {
+            if (posReferent >= countEstuds || posReferent < 0) {
                 System.out.println("No existe la posición");
             } else {
                 while (aux.getSiguiente() != null || countEstuds>0) {
-                    int index = positionEst(posReferent);
-                    if (index == i) {
-                        System.out.println(aux);
-                        break;
+                    if(aux.getSiguiente()==null){
+                        System.out.println(estudFinal);break;
                     }
-                    aux = aux.getSiguiente();
-                    i++;
+                    if(countEstuds==1){
+                        System.out.println(inicio);break;
+                    }
+                    if(posReferent==i) {
+                        System.out.println(aux.toString());break;
+                    }else {
+                        aux = aux.getSiguiente();
+                        i++;
+                    }
                 }// while que recorre la lista
             }
         }else{
-            System.out.println("lista Vacia");
-        }
+            System.out.println("lista Vacia");}
         System.out.println("\n¿ Desea volver al menú ?: Int \n 1)_____ SÍ\n 2)______NO");
         options.nextLine();
         int option = options.nextInt();
@@ -432,19 +450,16 @@ public class Lista {
                     }// end while
                 }// end if borrar al inicio
             } else {
-                System.out.println("No existe el estudiante ");
-            }
+                System.out.println("No existe el estudiante ");}
         } else {
-            System.out.println("Lista vacia");
-        }
+            System.out.println("Lista vacia");}
         System.out.println("\n¿ Desea ir al menú ?: Int \n 1)_ SÍ\n 2)__NO");
         int option = options.nextInt();
         options.nextLine();
         if (option == 1) {
             menu();
         } else {
-            System.out.println("Salió");
-        }
+            System.out.println("Salió");}
     }// end eliminar
 
     public Estudiante encuentraAnterior(Estudiante estudiante){
@@ -464,8 +479,7 @@ public class Lista {
                     return null;}
             }// while
         }else{
-            System.out.println("Lista vacia");
-        }
+            System.out.println("Lista vacia");}
         return aux;
     }// end encuentraAbterior
 }// class

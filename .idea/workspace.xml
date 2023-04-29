@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f0ddfd49-540a-4f85-a495-4add6bf86fec" name="Changes" comment="">
+    <list default="true" id="f0ddfd49-540a-4f85-a495-4add6bf86fec" name="Changes" comment="TerminadoFinal, jeje">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Lista.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lista.java" afterDir="false" />
     </list>
@@ -124,7 +124,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682712217275</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="TerminadoFinal, jeje">
+      <created>1682731456307</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1682731456307</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -145,6 +152,7 @@
     <MESSAGE value="adelanto" />
     <MESSAGE value="CAMBIO en modifcar" />
     <MESSAGE value="terminado, falta optimizar al MAXIMO pero terminado" />
-    <option name="LAST_COMMIT_MESSAGE" value="terminado, falta optimizar al MAXIMO pero terminado" />
+    <MESSAGE value="TerminadoFinal, jeje" />
+    <option name="LAST_COMMIT_MESSAGE" value="TerminadoFinal, jeje" />
   </component>
 </project>
