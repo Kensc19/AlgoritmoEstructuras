@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class Menu {
     Lista lista = new Lista();
+    Pilas pilas = new Pilas();
 
     public void menu_opciones() {
         boolean bandera = false;
@@ -28,7 +29,7 @@ public class Menu {
                     String lugar = scanner.nextLine();
                     System.out.println("Ingrese el correo del estudiante");
                     String correo = scanner.nextLine();
-                    lista.ingresarEstudiante(new Lista.Estudiante(nombre, id, edad, lugar, correo, new Lista.Estudiante()));
+                    pilas.push(new Lista.Estudiante(nombre, id, edad, lugar, correo, new Lista.Estudiante()));
                     break;
                 case 2:
                     lista.mostrarListaDeEstudiantes(opcion);
@@ -37,7 +38,7 @@ public class Menu {
                     lista.mostrarListaDeEstudiantes(opcion);
                     break;
                 case 4:
-                    lista.mostrarListaDeEstudiantes(opcion);
+                    pilas.mostrar();
                     break;
                 case 5:
                     lista.mostrarListaDeEstudiantes(opcion);
