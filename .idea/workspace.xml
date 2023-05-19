@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f0ddfd49-540a-4f85-a495-4add6bf86fec" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/interfacePilasColas.java" afterDir="false" />
+    <list default="true" id="f0ddfd49-540a-4f85-a495-4add6bf86fec" name="Changes" comment="laboratorio 3 terminado">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfacePilasColas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfacePilasColas.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,12 +168,12 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/interfacePilasColas.java</url>
-          <line>95</line>
+          <line>117</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/interfacePilasColas.java</url>
-          <line>92</line>
+          <line>114</line>
           <properties class="interfacePilasColas" method="showStack">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />

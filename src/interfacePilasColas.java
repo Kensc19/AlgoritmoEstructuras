@@ -1,13 +1,18 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
+/**
+ * Universidad De Costa Rica
+ * @author Brandon Vargas C28223
+ * @author Kendall Sanchez C27227
+ * Laboratorio 4 Algoritmos y estructuras de datos
+ * Pilas y colas
+ **/
 public class interfacePilasColas {
     Estudiante base;
     Estudiante estudianteTop;
     Scanner options = new Scanner(System.in);
 
     public void menu() {
-
         System.out.println("1 Ingresar Estudiante (push)");
         System.out.println("2 Hacer Estudiante (pop)");
         System.out.println("3 Mostrar Pila");
@@ -20,7 +25,7 @@ public class interfacePilasColas {
                         ingresarEstds();
                         break;
                     case 2:
-                        // pop();
+                         pop();
                         break;
                     case 3:
                       showStack();
@@ -78,9 +83,9 @@ public class interfacePilasColas {
             options.nextLine();
             ingresarEstds();
         }
-
     }// end ingresar estuds
 
+    // se ecnarga de hacer agregar por el inicio
     public void push(Estudiante estud){
         if (base==null ){
             base=estud;
@@ -89,7 +94,24 @@ public class interfacePilasColas {
             estud.setSiguiente(estudianteTop);
             estudianteTop=estud;
         }
-    }// end agregar al final
+    }// end agregar push()
+    public void pop(){// elimina por el inicio
+        if(base==null){
+            System.out.println("Pila vacia");
+        }else{
+            System.out.println(estudianteTop.toString());
+            delete(estudianteTop);
+        }
+        System.out.println("\n¿ Desea volver al menú ?: Int \n 1)_____ SÍ\n 2)______NO");
+        options.nextLine();
+        int option = options.nextInt();
+        if (option == 1) {
+            menu();
+        } else {
+            System.out.println("Salió");
+        }
+    }// end pop()
+
     public void showStack(){
         int i=0;
         Estudiante aux= estudianteTop;
@@ -103,7 +125,6 @@ public class interfacePilasColas {
                    aux= aux.getSiguiente();
                 i++;
             }//
-            System.out.print( "NULL");
         }else{
             System.out.println("Lista vacia");
         }
@@ -115,5 +136,13 @@ public class interfacePilasColas {
         } else {
             System.out.println("Salió");
         }
-    }// end mostrarEstudiantes
-}
+    }// end showStack
+    private void delete(Estudiante ests){
+        estudianteTop= ests.getSiguiente();
+        ests.setSiguiente(null);
+        if(estudianteTop==null){
+            base=null;
+        }
+    }// decidimos borrar el elemento
+
+}// end class
