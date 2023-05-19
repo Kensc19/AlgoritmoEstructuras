@@ -128,10 +128,10 @@ public class interfacePilasColas {
                     aux = aux.getSiguiente();
                 }//
             } else {
-                System.out.println("Lista vacia");
+                System.out.println("Pila vacia");
             }
         }else{
-            System.out.println("Lista vacia");
+            System.out.println("Pila vacia");
         }
         System.out.println("\n¿ Desea volver al menú ?: Int \n 1)_____ SÍ\n 2)______NO");
         options.nextLine();
@@ -155,14 +155,14 @@ public class interfacePilasColas {
         }else{
             System.out.println("Pila vacia");
         }
-            System.out.println("\n¿ Desea volver al menú ?: Int \n 1)_____ SÍ\n 2)______NO");
-            options.nextLine();
-            int option = options.nextInt();
-            if (option == 1) {
-                menu();
-            } else {
-                System.out.println("Salió");
-            }
+        System.out.println("\n¿ Desea volver al menú ?: Int \n 1)_____ SÍ\n 2)______NO");
+        options.nextLine();
+        int option = options.nextInt();
+        if (option == 1) {
+            menu();
+        } else {
+            System.out.println("Salió");
+        }
 
     }// end top():
 
