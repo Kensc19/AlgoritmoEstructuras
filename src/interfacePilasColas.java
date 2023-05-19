@@ -102,7 +102,7 @@ public class interfacePilasColas {
                 System.out.println(i + ".[ Estudiante: " + aux + " ]" + " --->  ");
                    aux= aux.getSiguiente();
                 i++;
-            }
+            }//
             System.out.print( "NULL");
         }else{
             System.out.println("Lista vacia");
