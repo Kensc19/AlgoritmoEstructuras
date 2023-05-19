@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f0ddfd49-540a-4f85-a495-4add6bf86fec" name="Changes" comment="laboratorio 3 terminado">
+    <list default="true" id="f0ddfd49-540a-4f85-a495-4add6bf86fec" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/interfacePilasColas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfacePilasColas.java" afterDir="false" />
     </list>
@@ -138,7 +138,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682805308557</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="lab4 pilas terminado">
+      <created>1684467834892</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1684467834892</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -161,19 +168,20 @@
     <MESSAGE value="terminado, falta optimizar al MAXIMO pero terminado" />
     <MESSAGE value="TerminadoFinal, jeje" />
     <MESSAGE value="laboratorio 3 terminado" />
-    <option name="LAST_COMMIT_MESSAGE" value="laboratorio 3 terminado" />
+    <MESSAGE value="lab4 pilas terminado" />
+    <option name="LAST_COMMIT_MESSAGE" value="lab4 pilas terminado" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/interfacePilasColas.java</url>
-          <line>117</line>
+          <line>120</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/interfacePilasColas.java</url>
-          <line>114</line>
+          <line>117</line>
           <properties class="interfacePilasColas" method="showStack">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />

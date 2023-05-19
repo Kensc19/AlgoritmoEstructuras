@@ -14,12 +14,13 @@ public class interfacePilasColas {
 
     public void menu() {
         System.out.println("1 Ingresar Estudiante (push)");
-        System.out.println("2 Hacer Estudiante (pop)");
+        System.out.println("2 Hacer (pop) a la pila");
         System.out.println("3 Mostrar Pila");
-        System.out.println("4 Salir");
+        System.out.println("4 Hacer .top ");
+        System.out.println("5 Salir");
         try {
             int optionUser = options.nextInt();
-            if (optionUser != 4) {
+            if (optionUser != 5) {
                 switch (optionUser) {
                     case 1:
                         ingresarEstds();
@@ -30,6 +31,8 @@ public class interfacePilasColas {
                     case 3:
                       showStack();
                         break;
+                    case 4:
+                       top();
                     default:
                         System.out.println("\nIngresó una opción que no está en el menú");
                         System.out.println("\n¿ Desea volver al menú ?: Int \n 1)_____ SÍ\n 2)______NO");
@@ -113,18 +116,20 @@ public class interfacePilasColas {
     }// end pop()
 
     public void showStack(){
-        int i=0;
         Estudiante aux= estudianteTop;
-        if(estudianteTop.getSiguiente()!=null ||estudianteTop.getSiguiente()==null ) {
-            while (aux.getSiguiente() != null||aux.getSiguiente()==null) {
-                if(aux.equals(base)){
-                    System.out.println(i + ".[ Estudiante: " + aux+ " ]" + " ->  ");
-                    break;
-                }
-                System.out.println(i + ".[ Estudiante: " + aux + " ]" + " --->  ");
-                   aux= aux.getSiguiente();
-                i++;
-            }//
+        if(base!=null) {
+            if (estudianteTop.getSiguiente() != null || estudianteTop.getSiguiente() == null) {
+                while (aux.getSiguiente() != null || aux.getSiguiente() == null) {
+                    if (aux.equals(base)) {
+                        System.out.println(".[ Estudiante: " + aux + " ]" + " ->  ");
+                        break;
+                    }
+                    System.out.println(".[ Estudiante: " + aux + " ]" + " --->  ");
+                    aux = aux.getSiguiente();
+                }//
+            } else {
+                System.out.println("Lista vacia");
+            }
         }else{
             System.out.println("Lista vacia");
         }
@@ -144,5 +149,21 @@ public class interfacePilasColas {
             base=null;
         }
     }// decidimos borrar el elemento
+    private void top(){
+        if(base!=null) {
+            System.out.println(estudianteTop.toString() + "\n");
+        }else{
+            System.out.println("Pila vacia");
+        }
+            System.out.println("\n¿ Desea volver al menú ?: Int \n 1)_____ SÍ\n 2)______NO");
+            options.nextLine();
+            int option = options.nextInt();
+            if (option == 1) {
+                menu();
+            } else {
+                System.out.println("Salió");
+            }
+
+    }// end top():
 
 }// end class
