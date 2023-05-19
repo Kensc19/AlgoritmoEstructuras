@@ -10,6 +10,8 @@ import java.util.Scanner;
 public class interfacePilasColas {
     Estudiante base;
     Estudiante estudianteTop;
+    Estudiante cola;
+    Estudiante frente;
     Scanner options = new Scanner(System.in);
 
     public void menu() {
@@ -33,6 +35,10 @@ public class interfacePilasColas {
                         break;
                     case 4:
                        top();
+                    case 5:
+                        dequeue();
+                    case 6:
+                        showCola();
                     default:
                         System.out.println("\nIngresó una opción que no está en el menú");
                         System.out.println("\n¿ Desea volver al menú ?: Int \n 1)_____ SÍ\n 2)______NO");
@@ -165,5 +171,66 @@ public class interfacePilasColas {
         }
 
     }// end top():
+
+    public void enqueue(Estudiante estud) {
+        if (cola == null) {
+            cola = estud;
+            frente = estud;
+        } else {
+            frente.setSiguiente(estud);
+            frente = estud;
+        }
+    }// end enqueue
+
+    public void dequeue() {// elimina por el inicio
+        if (cola == null) {
+            System.out.println("Pila vacia");
+        } else {
+            System.out.println(cola.toString());
+            delete(cola);
+        }
+        System.out.println("\n¿ Desea volver al menú ?: Int \n 1)_____ SÍ\n 2)______NO");
+        options.nextLine();
+        int option = options.nextInt();
+        if (option == 1) {
+            menu();
+        } else {
+            System.out.println("Salió");
+        }
+    }// end dequeue
+    private void deleteInCola(Estudiante ests) {
+        cola = ests.getSiguiente();
+        ests.setSiguiente(null);
+        if (cola == null) {
+            frente = null;
+        }
+    }
+    public void showCola() {
+        Estudiante aux = cola;
+        if (cola != null) {
+            if (cola.getSiguiente() != null || cola.getSiguiente() == null) {
+                while (aux.getSiguiente() != null || aux.getSiguiente() == null) {
+                    if (aux.equals(frente)) {
+                        System.out.println(".[ Estudiante: " + aux + " ]" + " ->  ");
+                        break;
+                    }
+                    System.out.println(".[ Estudiante: " + aux + " ]" + " --->  ");
+                    aux = aux.getSiguiente();
+                }//
+            } else {
+                System.out.println("Cola vacia");
+            }
+        } else {
+            System.out.println("Cola vacia");
+        }
+        System.out.println("\n¿ Desea volver al menú ?: Int \n 1)_____ SÍ\n 2)______NO");
+        options.nextLine();
+        int option = options.nextInt();
+        if (option == 1) {
+            menu();
+        } else {
+            System.out.println("Salió");
+        }// end showCola
+    }
 
 }// end class
