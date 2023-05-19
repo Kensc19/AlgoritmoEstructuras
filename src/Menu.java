@@ -40,8 +40,10 @@ public class Menu {
                     lista.mostrarListaDeEstudiantes(opcion);
                     break;
                 case 5:
+                    lista.mostrarListaDeEstudiantes(opcion);
                     break;
                 case 6:
+                    lista.mostrarListaDeEstudiantes(opcion);
                     break;
                 case 7:
                     System.out.println("Ingrese la posicion del estudiante que desea ver (empieza desde la posición 1)");
@@ -55,21 +57,24 @@ public class Menu {
                     boolean finalizar = false;
                     while(!finalizar) {
                         System.out.println("Ingrese el número del dato que desea modificar, o un 0 para finalizar\n" +
-                                            "1. Nombre\n"+
-                                            "2. ID\n"+
-                                            "3. Edad\n"+
-                                            "4. Lugar de residencia\n"+
-                                            "5. Correo\n");
+                                "1. Nombre\n" +
+                                "2. ID\n" +
+                                "3. Edad\n" +
+                                "4. Lugar de residencia\n" +
+                                "5. Correo\n");
                         int numeroDeDato = scanner.nextInt();
 
-                        if(numeroDeDato == 0)
+                        if (numeroDeDato == 0)
                             finalizar = true;
-                        else
-                            lista.buscarEstudianteParaModificarDato(nombreEstudiante,numeroDeDato);
+                        else {
+                            lista.buscarEstudianteParaModificarDato(nombreEstudiante, numeroDeDato);
+                            if (lista.finalizar)
+                                finalizar = true;
+                        }
                     }
-
                     break;
                 case 9:
+                    lista.mostrarListaDeEstudiantes(opcion);
                     break;
                 case 10:
                     System.out.println("La cantidad de estudiantes registrados es: " + lista.totalEstudiantesRegistrados() + "\n");
