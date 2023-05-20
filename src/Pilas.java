@@ -33,3 +33,6 @@ public class Pilas extends Lista{
     }
 
 }
+
+//pilas.mostrar();
+//pilas.push(new Lista.Estudiante(nombre, id, edad, lugar, correo, new Lista.Estudiante()));

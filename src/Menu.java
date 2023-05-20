@@ -4,7 +4,37 @@ public class Menu {
     Lista lista = new Lista();
     Pilas pilas = new Pilas();
 
-    public void menu_opciones() {
+    public void elegirMenu(){
+        Scanner scanner = new Scanner(System.in);
+        boolean finalizarPrograma = false;
+
+        while(!finalizarPrograma) {
+            System.out.println("***Menú Principal***");
+            System.out.println("Ingrese un [ 1 ] si desea ingresar al menú de listas enlazadas\n" +
+                    "Ingrese un [ 2 ] si desea ingresar al menú de pilas\n" +
+                    "Ingrese un [ 3 ] si desea ingresar al menú de colas\n" +
+                    "Ingrese un [ 4 ] si desea finalizar el programa");
+            int opcionMenu = scanner.nextInt();
+            switch (opcionMenu) {
+                case 1:
+                    menu_listas();
+                    break;
+                case 2:
+                    menu_pilas();
+                    break;
+                case 3:
+                    menu_colas();
+                    break;
+                case 4:
+                    finalizarPrograma = true;
+                    break;
+                default:
+                    System.out.println("La entrada no fue correcta, debe ingresar un 1,2,3 o un 4");
+            }//end switch
+        }//end while
+    }
+
+    public void menu_listas() {
         boolean bandera = false;
 
         while (!bandera) {
@@ -29,7 +59,7 @@ public class Menu {
                     String lugar = scanner.nextLine();
                     System.out.println("Ingrese el correo del estudiante");
                     String correo = scanner.nextLine();
-                    pilas.push(new Lista.Estudiante(nombre, id, edad, lugar, correo, new Lista.Estudiante()));
+                    lista.ingresarEstudiante(new Lista.Estudiante(nombre, id, edad, lugar, correo, new Lista.Estudiante()));
                     break;
                 case 2:
                     lista.mostrarListaDeEstudiantes(opcion);
@@ -38,7 +68,7 @@ public class Menu {
                     lista.mostrarListaDeEstudiantes(opcion);
                     break;
                 case 4:
-                    pilas.mostrar();
+                    lista.mostrarListaDeEstudiantes(opcion);
                     break;
                 case 5:
                     lista.mostrarListaDeEstudiantes(opcion);
@@ -86,5 +116,95 @@ public class Menu {
             }//end switch
 
         }//end while
-    }//end method
+        elegirMenu();
+    }
+
+    public void menu_pilas(){
+        Scanner scanner = new Scanner(System.in);
+        boolean salirMenuPilas = false;
+
+        while(!salirMenuPilas) {
+            System.out.println("***Menú de pilas***\n1. Ingresar Estudiante\n2. Eliminar estudiante que esté en el tope de la pila\n" +
+                    "3. Mostrar el estudiante que esté en el tope de la pila\n4. Mostrar la pila\n5. Salir del menú de pilas");
+            int opcionPilas = scanner.nextInt();
+            switch (opcionPilas) {
+                case 1:
+                    System.out.println("Ingrese el nombre del estudiante");
+                    scanner.nextLine();
+                    String nombre = scanner.nextLine();
+                    System.out.println("Ingrese el ID del estudiante");
+                    int id = scanner.nextInt();
+                    System.out.println("Ingrese la edad del estudiante");
+                    int edad = scanner.nextInt();
+                    System.out.println("Ingrese el lugar de residencia del estudiante");
+                    scanner.nextLine();
+                    String lugar = scanner.nextLine();
+                    System.out.println("Ingrese el correo del estudiante");
+                    String correo = scanner.nextLine();
+                    pilas.push(new Lista.Estudiante(nombre, id, edad, lugar, correo, new Lista.Estudiante()));
+                    break;
+                case 2:
+
+                    break;
+                case 3:
+
+                    break;
+                case 4:
+                    pilas.mostrar();
+                    break;
+                case 5:
+                    salirMenuPilas = true;
+                    break;
+                default:
+                    System.out.println("La entrada no fue correcta, debe ingresar un 1,2,3,4 o un 5");
+            }//end switch
+        }//end while
+        elegirMenu();
+    }
+
+    public void menu_colas(){
+        Scanner scanner = new Scanner(System.in);
+        boolean salirMenuColas = false;
+
+        while(!salirMenuColas) {
+            System.out.println("***Menú de colas***\n1. Ingresar Estudiante\n2. Eliminar estudiante que esté al frente de la cola\n" +
+                    "3. Mostrar el estudiante que esté al frente de la cola\n4. Mostrar la cola\n5. Salir del menú de colas");
+            int opcionColas = scanner.nextInt();
+            switch (opcionColas) {
+                case 1:
+                    System.out.println("Ingrese el nombre del estudiante");
+                    scanner.nextLine();
+                    String nombre = scanner.nextLine();
+                    System.out.println("Ingrese el ID del estudiante");
+                    int id = scanner.nextInt();
+                    System.out.println("Ingrese la edad del estudiante");
+                    int edad = scanner.nextInt();
+                    System.out.println("Ingrese el lugar de residencia del estudiante");
+                    scanner.nextLine();
+                    String lugar = scanner.nextLine();
+                    System.out.println("Ingrese el correo del estudiante");
+                    String correo = scanner.nextLine();
+                    //Aquí abajo iría el método push de colas
+                    //pilas.push(new Lista.Estudiante(nombre, id, edad, lugar, correo, new Lista.Estudiante()));
+                    break;
+                case 2:
+
+                    break;
+                case 3:
+
+                    break;
+                case 4:
+                    //Aquí abajo iría el método para mostrar la cola
+                    //pilas.mostrar();
+                    break;
+                case 5:
+                    salirMenuColas = true;
+                    break;
+                default:
+                    System.out.println("La entrada no fue correcta, debe ingresar un 1,2,3,4 o un 5");
+            }//end switch
+        }//end while
+        elegirMenu();
+    }
+
 }//end class

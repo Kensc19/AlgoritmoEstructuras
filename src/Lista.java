@@ -157,9 +157,9 @@ public class Lista {
                     }
                     ptr = ptr.next;
                 }
-                    if(!buscarID){
+                if(!buscarID){
                     System.out.println(id + " no existe en la lista"+"\n\n");
-                    }
+                }
                 break;
             case 6:
                 boolean buscarNombre = false;
@@ -173,9 +173,9 @@ public class Lista {
                     }
                     ptr = ptr.next;
                 }
-                    if(!buscarNombre){
-                        System.out.println(nombre + " no existe en la lista"+ "\n\n");
-                    }
+                if(!buscarNombre){
+                    System.out.println(nombre + " no existe en la lista"+ "\n\n");
+                }
                 break;
             case 9:
                 System.out.println("Ingrese el nombre del estudiante que desea borrar");
@@ -304,5 +304,3 @@ public class Lista {
         return contadorEstudiantes;
     }
 }//end class
-
-
