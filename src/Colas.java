@@ -15,7 +15,9 @@ public class Colas extends Lista{
 
     public void dequeue(){
         Estudiante ptr = head;
-        head = head.next;
+        if (ptr.toString().contains("0") && ptr.toString().contains("null"))
+            ptr = ptr.next;
+        head = ptr.next;
         System.out.println("Se ha eliminado al estudiante: " + ptr.getNombre() + "\n\n");
     }
 

@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f0ddfd49-540a-4f85-a495-4add6bf86fec" name="Changes" comment="Menús separados">
+    <list default="true" id="f0ddfd49-540a-4f85-a495-4add6bf86fec" name="Changes" comment="colas">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Colas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Colas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pilas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pilas.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,7 +102,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684559876891</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="colas">
+      <created>1684686763857</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1684686763857</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -126,6 +131,7 @@
     <MESSAGE value="arreglado" />
     <MESSAGE value="7" />
     <MESSAGE value="Menús separados" />
-    <option name="LAST_COMMIT_MESSAGE" value="Menús separados" />
+    <MESSAGE value="colas" />
+    <option name="LAST_COMMIT_MESSAGE" value="colas" />
   </component>
 </project>
