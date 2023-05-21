@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class Menu {
     Lista lista = new Lista();
     Pilas pilas = new Pilas();
+    Colas colas = new Colas();
 
     public void elegirMenu(){
         Scanner scanner = new Scanner(System.in);
@@ -144,10 +145,10 @@ public class Menu {
                     pilas.push(new Lista.Estudiante(nombre, id, edad, lugar, correo, new Lista.Estudiante()));
                     break;
                 case 2:
-
+                    pilas.pop();
                     break;
                 case 3:
-
+                    pilas.mostrarTop();
                     break;
                 case 4:
                     pilas.mostrar();
@@ -184,18 +185,16 @@ public class Menu {
                     String lugar = scanner.nextLine();
                     System.out.println("Ingrese el correo del estudiante");
                     String correo = scanner.nextLine();
-                    //Aquí abajo iría el método push de colas
-                    //pilas.push(new Lista.Estudiante(nombre, id, edad, lugar, correo, new Lista.Estudiante()));
+                    colas.enqueue(new Lista.Estudiante(nombre, id, edad, lugar, correo, new Lista.Estudiante()));
                     break;
                 case 2:
-
+                    colas.dequeue();
                     break;
                 case 3:
-
+                    colas.mostrarHead();
                     break;
                 case 4:
-                    //Aquí abajo iría el método para mostrar la cola
-                    //pilas.mostrar();
+                    colas.mostrar();
                     break;
                 case 5:
                     salirMenuColas = true;

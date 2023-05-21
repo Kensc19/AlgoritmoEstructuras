@@ -14,7 +14,21 @@ public class Pilas extends Lista{
                   top = ptr;
           }
     }
-    
+
+    public void pop() {
+        Estudiante ptr = top;
+        top = top.next;
+        System.out.println("Se ha eliminado al estudiante: " + ptr.getNombre() + "\n\n");
+    }
+
+    public void mostrarTop(){
+        Estudiante ptr = top;
+        if (top == null){
+            System.out.println("La pila esta vacía, ingrese un estudiante");
+        }
+        System.out.println("El top de la pila es: " + ptr + "\n\n");
+    }
+
     public void mostrar(){
         Estudiante ptr = top;
         System.out.println("Lista de estudiantes con todos los datos: ");
