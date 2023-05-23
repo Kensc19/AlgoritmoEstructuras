@@ -1,15 +1,15 @@
 public class Colas extends Lista{
     Estudiante head;
+    Estudiante rear;
 
     public void enqueue(Estudiante estudiante){
-        if(head == null) //verifica si esta vacía
-            head = estudiante; //el nuevo objeto pasa a ser el primero de la lista
+        if(head == null) { //verifica si esta vacía
+            head = estudiante;//el nuevo objeto pasa a ser el primero de la lista
+            rear = head;
+        }
         else{
-            Estudiante ptr = head; //Si no está vacia, debe agregar al final de la cola.
-            while(ptr.next!=null) { //recorre la lista hasta que sea nulo
-                ptr = ptr.next;
-            }
-            ptr.next = estudiante; //Apunta al nuevo objeto
+            rear.next = estudiante;//La cola se "enlaza" con el nuevo estudiante
+            rear = estudiante;//El estudiante que se ingresó pasa a ser la nueva cola
         }
     }
 

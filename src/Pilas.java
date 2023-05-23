@@ -1,12 +1,10 @@
 public class Pilas extends Lista{
     Estudiante top;
-    Estudiante base;
 
     public void push(Estudiante estudiante){
         Estudiante ptr = top;
-          if(base == null){
-              base = estudiante;
-              top = base;
+          if(top == null){
+              top = estudiante;
           }
           else{
                   ptr = estudiante;
